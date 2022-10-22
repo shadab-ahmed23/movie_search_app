@@ -1,7 +1,7 @@
 FROM node:10-alpine
 
 # Create app directory
-WORKDIR app
+WORKDIR /app
 
 # Copy both package.json and package-lock.json
 COPY package*.json ./
@@ -15,4 +15,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD [ "npm", "start"
+CMD [ "npm", "start"]
