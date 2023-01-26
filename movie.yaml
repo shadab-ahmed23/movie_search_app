@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-deployment
+  labels:
+    app: movie-app
+  namespace: myns    
+spec:
+  replicas: 2
+  strategy:
+   rollingUpdate:
+     maxUnavailable: 50%
+     maxSurge: 100%
+   type: RollingUpdate
+  selector:
+    matchLabels:
+      app: movie-app
+  template:
+    metadata:
+      labels:
+        app: movie-app   
+    spec:
+      containers:
+      - name: movie-app
+        image: shadabahmed23/movie-img1   
+        envFrom:
+         - secretRef:
+             name: mysecrets
+         - configMapRef:
+             name: mymap      
+        ports:    
+        - containerPort: 3000       
+        volumeMounts:
+           - name: testsecret
+             mountPath: "/tmp/mysecrets"   # the secret files will be mounted as ReadOnly by default here
+      volumes:
+      - name: testsecret  
+        awsElasticBlockStore:
+          volumeID: vol-03a971ed80dc1411d
+          fsType: ext4
+            
+
