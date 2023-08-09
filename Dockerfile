@@ -1,5 +1,3 @@
-FROM node:10-alpine
-
 # Create app directory
 WORKDIR /app
 
@@ -10,6 +8,7 @@ COPY package*.json ./
 # RUN npm install
 # For production use
 RUN npm install
+RUN npm fund
 
 # Bundle app source
 COPY . .
