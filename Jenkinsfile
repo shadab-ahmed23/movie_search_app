@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the code from '
-                sh "docker build -t movie-app ."
+                sh "docker build - < Dockerfile ."
             }
         }
         stage('push to dockerHub') {
