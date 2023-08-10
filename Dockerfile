@@ -1,4 +1,5 @@
 # Create app directory
+FROM node:latest
 WORKDIR /app
 
 # Copy both package.json and package-lock.json
