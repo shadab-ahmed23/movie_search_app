@@ -8,12 +8,7 @@ pipeline {
                 git url:"https://github.com/shadab-ahmed23/movie_search_app.git",branch:"master"
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building the code from '
-                sh "docker build -t movie-app3 ."
-            }
-        }
+        
         stage('push to dockerHub') {
             steps {
                 echo 'push the image to dockerHub'
