@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the code'
-                sh "docker-compose down && docker-compose up -d"
+                sh "docker run -p 3000:3000 -d shadabahmed23/movie-app3:latest"
             }
         }
     }
