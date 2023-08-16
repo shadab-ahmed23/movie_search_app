@@ -8,8 +8,9 @@ COPY package*.json ./
 # Install app dependencies
 # RUN npm install
 # For production use
-RUN npm install
 RUN npm fund
+RUN npm install
+
 
 # Bundle app source
 COPY . .
